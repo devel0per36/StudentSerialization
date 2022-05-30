@@ -17,7 +17,7 @@ import java.util.Optional;
  */
 public class App {
     /* Пунктирная линия */
-    private final static String dottedLine = "---------------------------------------------------";
+    private final static String DOTTED_LINE = "---------------------------------------------------";
 
     public static void main(String[] args) {
         String filenameProperty = "pathToSerializationObjects.properties";
@@ -26,18 +26,18 @@ public class App {
             List<Student> originalListStudents = createArrayStudents();
             System.out.println("Созданный список студентов:");
             outputStudents(originalListStudents);
-            System.out.println(dottedLine);
+            System.out.println(DOTTED_LINE);
             List<Student> sortedListStudents = sortStudents(originalListStudents);
             System.out.println("Отсортированный список студентов:");
             outputStudents(sortedListStudents);
-            System.out.println(dottedLine);
+            System.out.println(DOTTED_LINE);
             boolean serializationResult = serializationListStudents(serializationStudents, sortedListStudents);
             if (serializationResult) {
                 System.out.println("Отсортированный список студентов сериализован");
             } else {
                 System.out.println("Ошибка сериализации отсортированного списка студентов");
             }
-            System.out.println(dottedLine);
+            System.out.println(DOTTED_LINE);
             Optional<List<Student>> optionalListStudent = deserializationListStudents(serializationStudents);
             if (optionalListStudent.isPresent()) {
                 System.out.println("Десериализованный отсортированный список студентов:");
