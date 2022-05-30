@@ -9,14 +9,32 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+/**
+ * Класс для описания сериализации и десериализации студентов
+ * @version 1.0
+ */
 public class SerializationStudents {
+    /* Директория */
     private String directory;
+    /* Наименование файла */
     private String filename;
 
+    /**
+     * Конструктор для создания нового объекта типа SerializationStudents
+     * @param filenameProperty - наименование property-файла
+     * @throws PropertyFileException - исключение property-файла
+     * @throws IOException - исключение ввода/вывода
+     */
     public SerializationStudents(String filenameProperty) throws PropertyFileException, IOException {
         init(filenameProperty);
     }
 
+    /**
+     * Метод для сериализации списка студентов
+     * @param students - список студентов
+     * @return возвращает логический ответ о том, сериализован ли список
+     * @throws IOException - исключение ввода/вывода
+     */
     public boolean serializationListStudents(List<Student> students) throws IOException {
         if (students.isEmpty()) {
             return false;
@@ -33,6 +51,11 @@ public class SerializationStudents {
         return true;
     }
 
+    /**
+     * Метод для десериализации списка студентов
+     * @return возвращает логический ответ о том, десериализован ли список
+     * @throws IOException - исключение ввода/вывода
+     */
     public Optional<List<Student>> deserializationListStudents() throws IOException {
         String pathToFile = directory + File.separator + filename;
         Path pathFile = Paths.get(pathToFile);
@@ -51,6 +74,12 @@ public class SerializationStudents {
         return filename;
     }
 
+    /**
+     * Метод для инициализации объекта в конструкторе
+     * @param filenameProperty - наименование property-файла
+     * @throws PropertyFileException - исключение property-файла
+     * @throws IOException - исключение ввода/вывода
+     */
     private void init(String filenameProperty) throws PropertyFileException, IOException {
         if ((filenameProperty == null) || filenameProperty.isBlank()) {
             throw new PropertyFileException("File property not found");
@@ -72,6 +101,12 @@ public class SerializationStudents {
         this.filename = tempFileName;
     }
 
+    /**
+     * Метод для проверки содержимого property-файла
+     * @param directory - директория
+     * @param filename - наименование
+     * @return возвращает логический ответ о том, не пусты ли значения передаваемых переменных
+     */
     private boolean checkContentPropertyFile(String directory, String filename) {
         if ((directory == null) || (filename == null)) {
             return false;
@@ -79,6 +114,11 @@ public class SerializationStudents {
         return true;
     }
 
+    /**
+     * Метод для записи объекта в файл
+     * @param pathToFile - путь к файлу
+     * @param students - список студентов
+     */
     private void writeObjectToFile(String pathToFile, List<Student> students) {
         try(ObjectOutputStream outputStream = new ObjectOutputStream(
                 new FileOutputStream(pathToFile)
@@ -89,6 +129,11 @@ public class SerializationStudents {
         }
     }
 
+    /**
+     * Метод для чтения объеккта из файла
+     * @param pathToFile - путь к файлу
+     * @return возвращает класс-оболочку Optional с сериализованным объектом
+     */
     private Optional<List<Student>> readObjectFromFile(String pathToFile) {
         List<Student> deserializedList = new ArrayList<>();
         try(ObjectInputStream inputStream = new ObjectInputStream(

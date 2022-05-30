@@ -11,7 +11,12 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Класс для запуска приложения
+ * @version 1.0
+ */
 public class App {
+    /* Пунктирная линия */
     private final static String dottedLine = "---------------------------------------------------";
 
     public static void main(String[] args) {
@@ -97,7 +102,7 @@ public class App {
     /**
      * Метод для десериализации списка студентов
      * @param serialization - объект, с помощью которого происходит десериализация
-     * @return возвращает класс-оболочку со списком студентов
+     * @return возвращает класс-оболочку Optional со списком студентов
      */
     private static Optional<List<Student>> deserializationListStudents(SerializationStudents serialization) {
         Optional<List<Student>> optionalListStudent = null;
