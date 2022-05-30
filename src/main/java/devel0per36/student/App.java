@@ -5,6 +5,7 @@ import devel0per36.student.entity.component.Country;
 import devel0per36.student.entity.component.FullName;
 import devel0per36.student.exception.PropertyFileException;
 import devel0per36.student.serialize.SerializationStudents;
+import devel0per36.student.util.PrintingInfo;
 import devel0per36.student.util.SortingStudents;
 
 import java.io.IOException;
@@ -16,28 +17,24 @@ import java.util.Optional;
  * @version 1.0
  */
 public class App {
-    /* Пунктирная линия */
-    private final static String DOTTED_LINE = "---------------------------------------------------";
-
     public static void main(String[] args) {
         String filenameProperty = "pathToSerializationObjects.properties";
         try {
+            String line = PrintingInfo.DOTTED_LINE;
             SerializationStudents serializationStudents = new SerializationStudents(filenameProperty);
             List<Student> originalListStudents = createArrayStudents();
             System.out.println("Созданный список студентов:");
             outputStudents(originalListStudents);
-            System.out.println(DOTTED_LINE);
             List<Student> sortedListStudents = sortStudents(originalListStudents);
             System.out.println("Отсортированный список студентов:");
             outputStudents(sortedListStudents);
-            System.out.println(DOTTED_LINE);
             boolean serializationResult = serializationListStudents(serializationStudents, sortedListStudents);
             if (serializationResult) {
                 System.out.println("Отсортированный список студентов сериализован");
             } else {
                 System.out.println("Ошибка сериализации отсортированного списка студентов");
             }
-            System.out.println(DOTTED_LINE);
+            System.out.println(line);
             Optional<List<Student>> optionalListStudent = deserializationListStudents(serializationStudents);
             if (optionalListStudent.isPresent()) {
                 System.out.println("Десериализованный отсортированный список студентов:");
@@ -118,8 +115,6 @@ public class App {
      * Метод для вывода списка студентов
      */
     private static void outputStudents(List<Student> students) {
-        for (Student student : students) {
-            System.out.println(student);
-        }
+        PrintingInfo.printDataListStudents(students);
     }
 }
