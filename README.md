@@ -31,4 +31,4 @@
 
 Путь и наименование файла вы можете изменить в property-файле 
 **pathToSerializationObjects.properties** или создав и указав новый property-файл
-в классе запуска приложения App.java
+в классе запуска приложения **App.java**
