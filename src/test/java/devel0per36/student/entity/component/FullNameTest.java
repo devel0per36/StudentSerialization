@@ -1,6 +1,5 @@
 package devel0per36.student.entity.component;
 
-import devel0per36.student.entity.component.FullName;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

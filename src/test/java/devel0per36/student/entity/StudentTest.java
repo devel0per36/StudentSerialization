@@ -1,6 +1,5 @@
 package devel0per36.student.entity;
 
-import devel0per36.student.entity.Student;
 import devel0per36.student.entity.component.Country;
 import devel0per36.student.entity.component.FullName;
 import org.junit.jupiter.api.Assertions;
