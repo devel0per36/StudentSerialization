@@ -9,6 +9,7 @@ import devel0per36.student.util.PrintingInfo;
 import devel0per36.student.util.SortingStudents;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +22,11 @@ public class App {
         String filenameProperty = "pathToSerializationObjects.properties";
         try {
             String line = PrintingInfo.DOTTED_LINE;
+            System.out.println(line);
+            String patternDateTime = "dd.MM.YYYY, HH:mm:ss";
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(patternDateTime);
+            PrintingInfo.printDateTime(formatter);
+            System.out.println(line);
             SerializationStudents serializationStudents = new SerializationStudents(filenameProperty);
             List<Student> originalListStudents = createArrayStudents();
             System.out.println("Созданный список студентов:");

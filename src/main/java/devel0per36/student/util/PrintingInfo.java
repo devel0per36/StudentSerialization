@@ -2,6 +2,8 @@ package devel0per36.student.util;
 
 import devel0per36.student.entity.Student;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -36,4 +38,14 @@ public class PrintingInfo {
         System.out.println(DOTTED_LINE);
         students.forEach(PrintingInfo::printDataStudent);
     }
+
+    /**
+     * Метод для вывода даты и времени
+     * @param formatter
+     */
+    public static void printDateTime(DateTimeFormatter formatter) {
+        LocalDateTime localDateTimeNow = LocalDateTime.now();
+        String dateTime = localDateTimeNow.format(formatter);
+        System.out.println(dateTime);
+    } 
 }
